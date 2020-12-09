@@ -20,9 +20,9 @@ library(covidTJSP)
 Os dados podem ser baixados nos links abaixo.
 
 -   [Consulta de Julgados do Primeiro
-    Grau](inst/extdata/da_cjpg_covid.xlsx)
+    Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cjpg_covid.xlsx?raw=true)
 -   [Consulta de Processos do Primeiro
-    Grau](inst/extdata/da_cpopg_covid.xlsx)
+    Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cpopg_covid.xlsx?raw=true)
 
 ## Exemplo de aplicação
 

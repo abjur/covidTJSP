@@ -3,6 +3,7 @@
 library(magrittr)
 
 # CJPG ----
+message("cjpg download...")
 
 lex::tjsp_cjpg_download(
   busca = "covid OU pandemia OU corona",
@@ -11,6 +12,7 @@ lex::tjsp_cjpg_download(
   data_fim = Sys.Date()
 )
 
+message("cjpg parse...")
 da_cjpg <- fs::dir_ls("data-raw/cjpg_new", regexp = "pag_") %>%
   lex::pvec(lex::tjsp_cjpg_parse) %>%
   purrr::map_dfr("result")
@@ -32,6 +34,7 @@ writexl::write_xlsx(da_cjpg_covid, "inst/extdata/da_cjpg_covid.xlsx")
 
 # CPOPG ----
 
+message("cpopg download...")
 p_baixar <- setdiff(unique(da_cjpg_covid$n_processo), old)
 res <- lex::pvec(
   p_baixar,
@@ -39,6 +42,7 @@ res <- lex::pvec(
   dir = "data-raw/cpopg_new"
 )
 
+message("cpopg parse...")
 da_cpopg_covid_raw <- fs::dir_ls("data-raw/cpopg_new") %>%
   lex::pvec(lex::tjsp_cpopg_parse)
 
@@ -61,6 +65,7 @@ usethis::use_data(da_cpopg_covid, compress = "xz", overwrite = TRUE)
 writexl::write_xlsx(da_cpopg_covid, "inst/extdata/da_cpopg_covid.xlsx")
 
 # readme ----
+message("updating README")
 
 remotes::install_local(".")
 rmarkdown::render("README.Rmd", "github_document")
