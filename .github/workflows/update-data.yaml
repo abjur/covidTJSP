@@ -1,0 +1,45 @@
+# For help debugging build failures open an issue on the RStudio community with the 'github-actions' tag.
+# https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+  - cron: "0 6 * * *"
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.PAT }}
+      ESAJ_LOGIN: ${{ secrets.ESAJLOGIN }}
+      ESAJ_SENHA: ${{ secrets.ESAJSENHA }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install dependencies
+        run: |
+          options(repos = "https://packagemanager.rstudio.com/all/__linux__/bionic/latest")
+          install.packages(c("remotes", "rcmdcheck", "tidyverse"))
+          remotes::install_github("terranova/lex")
+          remotes::install_local(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        shell: Rscript {0}
+      - name: Execute Script
+        run: |
+          Rscript "data-raw/update.R"
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/da_cjpg_covid.rda
+          git add data/da_cpopg_covid.rda
+          git add inst/extdata/da_cjpg_covid.xlsx
+          git add inst/extdata/da_cpopg_covid.xlsx
+          git commit -m 'Update data' || echo "Update data"
+          git push origin || echo "Update data"
