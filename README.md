@@ -6,27 +6,22 @@
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/abjur/covidTJSP/workflows/R-CMD-check/badge.svg)](https://github.com/abjur/covidTJSP/actions)
+status](https://github.com/abjur/covidTJSP/workflows/update-data/badge.svg)](https://github.com/abjur/covidTJSP/actions)
 <!-- badges: end -->
 
 Baixa e estrutura dados de covid do TJSP.
 
 ``` r
 library(covidTJSP)
-#> 
-#> Attaching package: 'covidTJSP'
-#> The following objects are masked _by_ '.GlobalEnv':
-#> 
-#>     da_cjpg_covid, da_cpopg_covid
 ```
 
 **Última atualização:** 09/12/2020.
 
 Os dados podem ser baixados nos links abaixo.
 
-  - [Consulta de Julgados do Primeiro
+-   [Consulta de Julgados do Primeiro
     Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cjpg_covid.xlsx?raw=true)
-  - [Consulta de Processos do Primeiro
+-   [Consulta de Processos do Primeiro
     Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cpopg_covid.xlsx?raw=true)
 
 ## Exemplo de aplicação
@@ -70,3 +65,7 @@ covidTJSP::da_cjpg_covid %>%
 ```
 
 <img src="man/figures/README-simple-plot-1.png" width="100%" />
+
+# Licença
+
+MIT

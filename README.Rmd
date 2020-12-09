@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # covidTJSP
 
 <!-- badges: start -->
-[![R build status](https://github.com/abjur/covidTJSP/workflows/R-CMD-check/badge.svg)](https://github.com/abjur/covidTJSP/actions)
+[![R build status](https://github.com/abjur/covidTJSP/workflows/update-data/badge.svg)](https://github.com/abjur/covidTJSP/actions)
 <!-- badges: end -->
 
 Baixa e estrutura dados de covid do TJSP.
@@ -72,4 +72,6 @@ covidTJSP::da_cjpg_covid %>%
   )
 ```
 
+# Licença
 
+MIT
