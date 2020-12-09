@@ -29,12 +29,12 @@ library(covidTJSP)
 
 Os dados podem ser baixados nos links abaixo.
 
-- [Consulta de Julgados do Primeiro Grau](inst/extdata/da_cjpg_covid.xlsx)
-- [Consulta de Processos do Primeiro Grau](inst/extdata/da_cpopg_covid.xlsx)
+- [Consulta de Julgados do Primeiro Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cjpg_covid.xlsx?raw=true)
+- [Consulta de Processos do Primeiro Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cpopg_covid.xlsx?raw=true)
 
 ## Exemplo de aplicação
 
-```{r simple-plot, dpi = 450}
+```{r simple-plot, dpi = 300}
 covidTJSP::da_cjpg_covid %>% 
   dplyr::arrange(dplyr::desc(date)) %>% 
   dplyr::distinct(n_processo, .keep_all = TRUE) %>% 
