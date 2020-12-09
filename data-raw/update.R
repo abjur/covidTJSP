@@ -5,7 +5,7 @@ library(magrittr)
 # CJPG ----
 message("cjpg download...")
 
-lex::tjsp_cjpg_download(
+res <- lex::tjsp_cjpg_download(
   busca = "covid OU pandemia OU corona",
   dir = "data-raw/cjpg_new",
   data_ini = Sys.Date() - 10,
@@ -48,14 +48,13 @@ da_cpopg_covid_raw <- fs::dir_ls("data-raw/cpopg_new") %>%
 
 da_cpopg_covid_new <- da_cpopg_covid_raw %>%
   purrr::map_dfr("result", .id = "arq") %>%
-  dplyr::filter(is.na(erro)) %>%
-  dplyr::select(
-    arq, id_processo, status, assunto, classe,
-    foro, juiz, vara, distribuicao, local_fisico,
-    controle, area, outros_assuntos, cdp,
-    digital, valor_da_acao, processo_principal,
-    recebido_em, apensado_ao
-  )
+  dplyr::select(dplyr::any_of(c(
+    "arq", "id_processo", "status", "assunto", "classe",
+    "foro", "juiz", "vara", "distribuicao", "local_fisico",
+    "controle", "area", "outros_assuntos", "cdp",
+    "digital", "valor_da_acao", "processo_principal",
+    "recebido_em", "apensado_ao"
+  )))
 
 da_cpopg_covid <- covidTJSP::da_cpopg_covid %>%
   dplyr::bind_rows(da_cpopg_covid_new) %>%
