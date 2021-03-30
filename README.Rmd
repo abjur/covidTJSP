@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# covidTJSP
+# covidTJSP <img src='man/figures/logo.png' align="right" height="138" />
 
 <!-- badges: start -->
 [![R build status](https://github.com/abjur/covidTJSP/workflows/update-data/badge.svg)](https://github.com/abjur/covidTJSP/actions)
