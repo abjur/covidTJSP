@@ -36,7 +36,7 @@ writexl::write_xlsx(da_cjpg_covid, "inst/extdata/da_cjpg_covid.xlsx")
 
 message("cpopg download...")
 p_baixar <- setdiff(unique(da_cjpg_covid$n_processo), old)
-res <- lex::pvec(
+res <- purrr::map(
   p_baixar,
   lex::tjsp_cpopg_download,
   dir = "data-raw/cpopg_new"
