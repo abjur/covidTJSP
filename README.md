@@ -15,12 +15,12 @@ Baixa e estrutura dados de covid do TJSP.
 library(covidTJSP)
 #> 
 #> Attaching package: 'covidTJSP'
-#> The following objects are masked _by_ '.GlobalEnv':
+#> The following object is masked _by_ '.GlobalEnv':
 #> 
-#>     da_cjpg_covid, da_cpopg_covid
+#>     da_cjpg_covid
 ```
 
-**Última atualização:** 16/04/2021.
+**Última atualização:** 17/04/2021.
 
 Os dados podem ser baixados nos links abaixo.
 
