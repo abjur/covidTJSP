@@ -20,7 +20,7 @@ library(covidTJSP)
 #>     da_cjpg_covid, da_cpopg_covid
 ```
 
-**Última atualização:** 16/05/2021.
+**Última atualização:** 17/05/2021.
 
 Os dados podem ser baixados nos links abaixo.
 
