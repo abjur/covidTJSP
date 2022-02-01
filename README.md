@@ -20,7 +20,7 @@ library(covidTJSP)
 #>     da_cjpg_covid, da_cpopg_covid
 ```
 
-**Última atualização:** 21/01/2022.
+**Última atualização:** 01/02/2022.
 
 Os dados podem ser baixados nos links abaixo.
 
@@ -67,6 +67,8 @@ covidTJSP::da_cjpg_covid %>%
       sep = "\n"
     )
   )
+#> Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
+#> "none")` instead.
 ```
 
 <img src="man/figures/README-simple-plot-1.png" width="100%" />
