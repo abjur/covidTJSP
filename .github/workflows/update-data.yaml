@@ -38,7 +38,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
       - name: Atualizar dados
         run: Rscript data-raw/update.R
-      - name: Upload DJs
+      - name: Upload dos dados na GCP
         run: gsutil -m cp -r /inst/* gs://covid-tjsp
       - name: Commit results
         run: |

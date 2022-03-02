@@ -23,6 +23,7 @@ Imports:
     ggplot2,
     lubridate,
     magrittr,
+    progressr,
     purrr,
     readr,
     remotes,
