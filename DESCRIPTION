@@ -17,6 +17,20 @@ RoxygenNote: 7.1.1
 URL: https://github.com/abjur/covidTJSP
 BugReports: https://github.com/abjur/covidTJSP/issues
 Imports: 
-    magrittr
+    dplyr,
+    fs,
+    ggplot2,
+    lubridate,
+    magrittr,
+    purrr,
+    readr,
+    remotes,
+    rmarkdown,
+    stringr,
+    usethis
 Depends: 
     R (>= 2.10)
+Suggests: 
+    lex (>= 0.2.0.9000)
+Remotes:  
+    terranova/lex

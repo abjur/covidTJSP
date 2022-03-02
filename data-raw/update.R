@@ -5,6 +5,8 @@ library(magrittr)
 # CJPG ----
 message("cjpg download...")
 
+dir.create("inst/extdata", FALSE, TRUE)
+
 res <- lex::tjsp_cjpg_download(
   busca = "covid OU pandemia OU corona",
   dir = "data-raw/cjpg_new",
@@ -30,7 +32,7 @@ da_cjpg_covid <- covidTJSP::da_cjpg_covid %>%
   dplyr::distinct(codigo, .keep_all = TRUE)
 
 usethis::use_data(da_cjpg_covid, overwrite = TRUE, compress = "xz")
-writexl::write_xlsx(da_cjpg_covid, "inst/extdata/da_cjpg_covid.xlsx")
+readr::write_csv(da_cjpg_covid, "inst/extdata/da_cjpg_covid.csv")
 
 # CPOPG ----
 
@@ -61,7 +63,7 @@ da_cpopg_covid <- covidTJSP::da_cpopg_covid %>%
   dplyr::distinct(cdp, .keep_all = TRUE)
 
 usethis::use_data(da_cpopg_covid, compress = "xz", overwrite = TRUE)
-writexl::write_xlsx(da_cpopg_covid, "inst/extdata/da_cpopg_covid.xlsx")
+readr::write_csv(da_cpopg_covid, "inst/extdata/da_cpopg_covid.csv")
 
 # readme ----
 message("updating README")
