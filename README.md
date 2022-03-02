@@ -20,9 +20,9 @@ library(covidTJSP)
 Os dados podem ser baixados nos links abaixo.
 
 -   [Consulta de Julgados do Primeiro
-    Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cjpg_covid.xlsx?raw=true)
+    Grau](https://storage.googleapis.com/covid-tjsp/da_cjpg_covid.csv)
 -   [Consulta de Processos do Primeiro
-    Grau](https://github.com/abjur/covidTJSP/blob/master/inst/extdata/da_cpopg_covid.xlsx?raw=true)
+    Grau](https://storage.googleapis.com/covid-tjsp/da_cpopg_covid.csv)
 
 ## Exemplo de aplicação
 
@@ -30,9 +30,12 @@ Os dados podem ser baixados nos links abaixo.
 covidTJSP::da_cjpg_covid %>% 
   dplyr::arrange(dplyr::desc(date)) %>% 
   dplyr::distinct(n_processo, .keep_all = TRUE) %>% 
-  dplyr::mutate(mes = lubridate::floor_date(date, "month")) %>% 
-  dplyr::count(mes) %>% 
-  dplyr::arrange(mes) %>% 
+  dplyr::mutate(
+    mes = lubridate::floor_date(date, "month"),
+    ano = as.character(lubridate::year(date))
+  ) %>% 
+  dplyr::count(ano, mes) %>% 
+  dplyr::arrange(ano, mes) %>% 
   dplyr::mutate(acu = cumsum(n)) %>% 
   dplyr::mutate(tipo = dplyr::case_when(
     mes == lubridate::floor_date(Sys.Date(), "month") ~ "incompleto",
@@ -48,7 +51,8 @@ covidTJSP::da_cjpg_covid %>%
     big.mark = ".", decimal.mark = ","
   )) +
   ggplot2::scale_fill_viridis_d(begin = .2, end = .8) +
-  ggplot2::guides(fill = FALSE) +
+  ggplot2::guides(fill = "none") +
+  ggplot2::facet_wrap(~ano, scales = "free_x", ncol = 2) +
   ggplot2::theme_minimal(12) +
   ggplot2::labs(
     title = "Quantidade de decisões no 1º grau",
@@ -62,8 +66,6 @@ covidTJSP::da_cjpg_covid %>%
       sep = "\n"
     )
   )
-#> Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
-#> "none")` instead.
 ```
 
 <img src="man/figures/README-simple-plot-1.png" width="100%" />
