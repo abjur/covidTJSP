@@ -39,7 +39,7 @@ jobs:
       - name: Atualizar dados
         run: Rscript data-raw/update.R
       - name: Upload dos dados na GCP
-        run: gsutil -m cp -r /inst/* gs://covid-tjsp
+        run: gsutil -m cp -r inst/extdata/* gs://covid-tjsp
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
