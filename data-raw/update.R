@@ -1,5 +1,6 @@
 ## Atualização dos dados
 
+remotes::install_local()
 library(magrittr)
 
 # CJPG ----
