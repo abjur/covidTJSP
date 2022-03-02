@@ -5,7 +5,7 @@
 \alias{da_cpopg_covid}
 \title{da_cpopg_covid}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 30319 rows and 19 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 142351 rows and 19 columns.
 }
 \usage{
 da_cpopg_covid
